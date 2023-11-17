@@ -41,7 +41,7 @@ class Task009Test {
 
         onView(
             allOf(
-                withId(R.id.removeButton),
+            withId(R.id.removeButton),
                 withText("remove"),
                 isAssignableFrom(Button::class.java),
                 withParent(isAssignableFrom(LinearLayout::class.java)),
