@@ -43,12 +43,8 @@ class CountTest {
         Count.Base(step = -1)
     }
 
-    @Test
+    @Test(expected = IllegalStateException::class)
     fun test_negative_minus_2() {
-        try {
-            Count.Base(step = -2)
-        } catch (e: Exception) {
-            assertEquals("step should be positive, but was -2", e.message)
-        }
+        Count.Base(step = -2)
     }
 }
