@@ -14,13 +14,12 @@ class App : Application() {
             .baseUrl("https://www.google.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        viewModel =
-            MainViewModel(
-                LiveDataWrapper.Base(),
-                Repository.Base(
-                    retrofit.create(SimpleService::class.java),
-                    "https://raw.githubusercontent.com/JohnnySC/ZeroToHeroAndroidTDD/task/018-clouddatasource/app/sampleresponse.json"
-                )
-            )
+        val service: SimpleService = retrofit.create(SimpleService::class.java)
+        viewModel = MainViewModel(LiveDataWrapper.Base(), Repository.Base(service, URL))
+    }
+
+    companion object {
+        private const val URL =
+            "https://raw.githubusercontent.com/JohnnySC/ZeroToHeroAndroidTDD/task/018-clouddatasource/app/sampleresponse.json"
     }
 }

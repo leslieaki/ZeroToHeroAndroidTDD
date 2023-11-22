@@ -16,7 +16,7 @@ class MainViewModel(
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
             val text = repository.load()
-            liveDataWrapper.update(UiState.ShowData(text.toString()))
+            liveDataWrapper.update(UiState.ShowData(text.text))
         }
     }
 

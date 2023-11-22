@@ -4,8 +4,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import java.io.Serializable
 
-interface UiState {
+interface UiState : Serializable {
 
     fun apply(textView: TextView, button: Button, progressBar: ProgressBar)
 
@@ -17,8 +18,9 @@ interface UiState {
         }
     }
 
-    class ShowData(private val text: String) : UiState {
+    data class ShowData(private val text: String) : UiState {
         override fun apply(textView: TextView, button: Button, progressBar: ProgressBar) {
+            textView.text = text
             textView.visibility = View.VISIBLE
             button.isEnabled = true
             progressBar.visibility = View.GONE
