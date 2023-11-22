@@ -9,19 +9,22 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:text="some text"
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/actionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/load" />
+        android:text="load" />
 
 </LinearLayout>

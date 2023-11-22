@@ -9,7 +9,7 @@ interface LiveDataWrapper : ProvideViewModel {
 
     fun update(value: UiState)
 
-    class Base(private val liveData: MutableLiveData<UiState> = MutableLiveData()) :
+    class Base(private val liveData: MutableLiveData<UiState> = SingleLiveEvent()) :
         LiveDataWrapper {
         override fun save(bundleWrapper: BundleWrapper.Save) {
             liveData.value?.let { bundleWrapper.save(it) }
