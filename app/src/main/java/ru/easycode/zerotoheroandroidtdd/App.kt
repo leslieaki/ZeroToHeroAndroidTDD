@@ -10,7 +10,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         val retrofit = Retrofit.Builder()
-            .baseUrl(URL)
+            .baseUrl("https://www.google.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(SimpleService::class.java)
