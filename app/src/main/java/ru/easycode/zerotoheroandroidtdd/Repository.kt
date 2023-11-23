@@ -11,10 +11,7 @@ interface Repository {
             return try {
                 LoadResult.Success(service.fetch(url))
             } catch (e: Exception) {
-                when (e) {
-                    is UnknownHostException -> LoadResult.Error(true)
-                    else -> LoadResult.Error(false)
-                }
+                LoadResult.Error(e is UnknownHostException)
             }
         }
     }
