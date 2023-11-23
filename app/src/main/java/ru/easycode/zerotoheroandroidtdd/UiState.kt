@@ -1,6 +1,8 @@
 package ru.easycode.zerotoheroandroidtdd
 
-interface UiState {
+import java.io.Serializable
+
+interface UiState : Serializable {
 
     object ShowProgress : UiState
 
