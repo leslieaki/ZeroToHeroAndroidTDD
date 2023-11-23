@@ -12,5 +12,7 @@ interface BundleWrapper {
         fun restore(): UiState
     }
 
-    class Base()
+    class Base() : BundleWrapper {
+
+    }
 }
