@@ -1,17 +1,14 @@
 package ru.easycode.zerotoheroandroidtdd.main
 
-import androidx.lifecycle.LiveData
 import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
 
-interface Navigation : LiveDataWrapper<CharSequence> {
+interface Navigation {
 
-    interface Read {
-        fun liveData(): LiveData<Screen>
-    }
+    interface Read : LiveDataWrapper.Read<Screen>
 
-    interface Update {
-        fun update(value: Screen)
-    }
+    interface Update : LiveDataWrapper.Update<Screen>
 
     interface Mutable : Read, Update
+
+    class Base : LiveDataWrapper.Abstract<Screen>(), Mutable
 }

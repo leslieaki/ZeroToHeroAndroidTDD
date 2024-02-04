@@ -3,7 +3,7 @@ package ru.easycode.zerotoheroandroidtdd.core
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-interface LiveDataWrapper<T> {
+interface LiveDataWrapper {
 
     interface Read<T : Any> {
         fun liveData(): LiveData<T>
@@ -15,11 +15,13 @@ interface LiveDataWrapper<T> {
 
     interface Mutable<T : Any> : Read<T>, Update<T>
 
-    abstract class Abstract(private val liveData: MutableLiveData<CharSequence> = SingleLiveEvent()) :
-        Mutable<CharSequence> {
-        override fun liveData(): LiveData<CharSequence> = liveData()
+    abstract class Abstract<T : Any>(
+        protected val liveData: MutableLiveData<T> = SingleLiveEvent()
+    ) :
+        Mutable<T> {
+        override fun liveData(): LiveData<T> = liveData
 
-        override fun update(value: CharSequence) {
+        override fun update(value: T) {
             liveData.value = value
         }
     }
