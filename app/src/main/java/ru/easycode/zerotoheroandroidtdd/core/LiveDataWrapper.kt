@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -22,6 +23,7 @@ interface LiveDataWrapper {
         override fun liveData(): LiveData<T> = liveData
 
         override fun update(value: T) {
+            Log.d("livedatawrapper trigger","livedatawrapper")
             liveData.value = value
         }
     }

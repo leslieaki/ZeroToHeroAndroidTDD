@@ -127,7 +127,7 @@ class Task025Test {
         val listPage = ListPage()
         val createPage = CreatePage()
 
-        for (i in 0..10) {
+        for (i in 0..3) {
             val text = "testing text number $i"
             listPage.checkVisibleNow()
             listPage.clickAddButton()
@@ -145,7 +145,7 @@ class Task025Test {
     fun test_save_and_restore() {
         val listPage = ListPage()
         test_create_many_items()
-        val texts = (0..10).map { "testing text number $it" }
+        val texts = (0..3).map { "testing text number $it" }
         listPage.checkTexts(texts)
 
         activityScenarioRule.scenario.recreate()

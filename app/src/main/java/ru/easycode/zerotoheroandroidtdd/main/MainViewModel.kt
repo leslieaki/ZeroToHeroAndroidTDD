@@ -12,8 +12,4 @@ class MainViewModel(private val navigation: Navigation.Mutable) : ViewModel(), N
     }
 
     override fun liveData(): LiveData<Screen> = navigation.liveData()
-
-    override fun onCleared() {
-        super.onCleared()
-    }
 }

@@ -13,5 +13,14 @@ class ListViewModel(
         navigation.update(CreateScreen)
     }
 
+    fun save(bundleWrapper: BundleWrapper.Save) {
+        liveDataWrapper.save(bundleWrapper)
+    }
+
+    fun restore(bundleWrapper: BundleWrapper.Restore) {
+        val list = bundleWrapper.restore()
+        liveDataWrapper.update(list)
+    }
+
     override fun liveData(): LiveData<List<CharSequence>> = liveDataWrapper.liveData()
 }
