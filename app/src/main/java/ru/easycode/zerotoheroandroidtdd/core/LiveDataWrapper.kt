@@ -1,11 +1,9 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 interface LiveDataWrapper {
-
     interface Read<T : Any> {
         fun liveData(): LiveData<T>
     }
@@ -15,15 +13,12 @@ interface LiveDataWrapper {
     }
 
     interface Mutable<T : Any> : Read<T>, Update<T>
-
     abstract class Abstract<T : Any>(
         protected val liveData: MutableLiveData<T> = SingleLiveEvent()
     ) :
         Mutable<T> {
         override fun liveData(): LiveData<T> = liveData
-
         override fun update(value: T) {
-            Log.d("livedatawrapper trigger","livedatawrapper")
             liveData.value = value
         }
     }

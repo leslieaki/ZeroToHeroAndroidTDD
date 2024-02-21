@@ -19,12 +19,13 @@ interface ProvideViewModel {
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
             return when (viewModelClass) {
                 MainViewModel::class.java -> MainViewModel(navigation)
-                ListViewModel::class.java -> ListViewModel(liveData, navigation)
+                ListViewModel::class.java -> ListViewModel(liveData, navigation, clearViewModel)
                 CreateViewModel::class.java -> CreateViewModel(
                     liveData,
                     navigation,
                     clearViewModel
                 )
+
                 else -> throw Exception()
             } as T
         }

@@ -2,12 +2,16 @@ package ru.easycode.zerotoheroandroidtdd.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
 import ru.easycode.zerotoheroandroidtdd.create.CreateScreen
+import ru.easycode.zerotoheroandroidtdd.create.CreateViewModel
 import ru.easycode.zerotoheroandroidtdd.main.Navigation
+import ru.easycode.zerotoheroandroidtdd.main.Screen
 
 class ListViewModel(
     private val liveDataWrapper: ListLiveDataWrapper.Mutable,
-    private val navigation: Navigation.Update
+    private val navigation: Navigation.Update,
+    private val clearViewModel: ClearViewModel
 ) : ViewModel(), ListLiveDataWrapper.Read {
     fun create() {
         navigation.update(CreateScreen)
@@ -20,6 +24,11 @@ class ListViewModel(
     fun restore(bundleWrapper: BundleWrapper.Restore) {
         val list = bundleWrapper.restore()
         liveDataWrapper.update(list)
+    }
+
+    fun comeback() {
+        navigation.update(Screen.Pop)
+        clearViewModel.clear(CreateViewModel::class.java)
     }
 
     override fun liveData(): LiveData<List<CharSequence>> = liveDataWrapper.liveData()

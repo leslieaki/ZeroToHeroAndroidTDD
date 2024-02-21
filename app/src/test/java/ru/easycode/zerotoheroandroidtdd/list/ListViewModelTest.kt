@@ -2,6 +2,7 @@ package ru.easycode.zerotoheroandroidtdd.list
 
 import org.junit.Before
 import org.junit.Test
+import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
 import ru.easycode.zerotoheroandroidtdd.create.CreateScreen
 import ru.easycode.zerotoheroandroidtdd.main.FakeNavigation
 import ru.easycode.zerotoheroandroidtdd.main.Navigation
@@ -19,9 +20,10 @@ class ListViewModelTest {
         navigation = FakeNavigation.Base()
         val navigationUpdate: Navigation.Update = navigation
 
+
         viewModel = ListViewModel(
             liveDataWrapper = mutableLiveDataWrapper,
-            navigation = navigationUpdate
+            navigation = navigationUpdate,
         )
     }
 
